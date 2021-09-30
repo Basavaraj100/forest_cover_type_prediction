@@ -1,25 +1,96 @@
 # forest_cover_type_prediction
 
-- Data source: https://www.kaggle.com/c/forest-cover-type-prediction/data
+## Data source: 
+https://www.kaggle.com/c/forest-cover-type-prediction/data
  
-- **Problem statment:** The goal is to predict seven different cover types in four different wilderness areas of 
+## Problem statment
+The goal is to predict seven different cover types in four different wilderness areas of 
 the Roosevelt National Forest of Northern Colorado with the best accuracy
 
-- To solve this problem we used Decision tree and Random Forest algorithms .
+**The seven forest cover types are-**<br>
+1: Spruce/Fir<br>
+2: Lodgepole Pine<br>           
+3: Ponderosa Pine<br>
+4: Cottonwood/Willow<br>
+5: Aspen<br>
+6: Douglas-fir<br>
+7: Krummholz<br>
 
-- Random forest works best for the given data.
-- Feature selection technique applied to get the best features and fit the final model with selected features only
+**Four wilderness areas are-**<br>
+1: Rawah<br>
+2: Neota<br>
+3: Comanche Peak<br>
+4: Cache la Poudre<br>
 
-- Feature importance from random forest model used as feature selection technique. We selected top top 16 features and able achive 85% accuracy for test data only with 16 features.
+# My approacg
 
 
+## Rare soil types
+- There are 40 binary columns related to soil type but when we merge those 40 columns into one column we found that 
+there are some soil types which do not occure more than 100 times, we converted all soil types of frequency less than 100 into rare soil type
+```python
+rare_soil_type=soil_type_freq[soil_type_freq<100].index.to_list()
+eda_df['soil_type']=eda_df['soil_type'].replace(to_replace=rare_soil_type,value='rare_soil_type')
+```
+
+- Rare soil types are
+
+
+
+![image](\images\rare_soil_types.PNG)
+
+
+
+## Ml model building
+- We used Decision tree as base model, becuase it need less feature engineering then we tried with random forest followed by feature selection
+
+![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\model_building_flowchart.png)
+
+
+## Feature selection
+- The feature importance technique from random forest is used to select top 16 important features
 - selected features are:
-- ![image](https://user-images.githubusercontent.com/67173421/134320489-05ce0409-6f70-47f1-878d-a482829b16a1.png)
+
+![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\selected_features.PNG)
+
+## Final model performance
+- Finally we select random forest as final model with selected features and hyperparameter tuning
+- **Confusion matrix**
+
+![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\confussion_matrix.PNG)
+
+- **Classification report**
+![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\classification_report.PNG)
 
 
-- Finally the model is deployed in Google cloud platform (GCP).
+## Model deployment in GCP
+- The model is deployed in Google cloud pltform
+the supported files are:
 
+a)Dockerfile
+```python
+FROM python:3.9
+WORKDIR /app
+COPY requirements.txt ./requirements.txt
+
+RUN pip3 install -r requirements.txt
+EXPOSE 8080
+COPY . /app
+
+CMD streamlit run --server.port 8080 --server.enableCORS false app.py
+```
+
+b)app.yaml
+```python
+runtime: custom
+env: flex
+```
+
+## Forest area cover type prediction App
+- The app is divided into three sections
+a) About: Here you will found the description about problem statment
+b) EDA and model building: Here you will found the description about complete EDA and Model building
+c) Run App: Here you can use the app to predict the forest cover type fot customised input.And also you can predict from the csv file which should follow given conditions(described in How input csv file should be)
 
 App link: https://forest-326117.el.r.appspot.com/
- 
 
