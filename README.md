@@ -65,7 +65,7 @@ eda_df['soil_type']=eda_df['soil_type'].replace(to_replace=rare_soil_type,value=
 
 ## Model deployment in GCP
 - The model is deployed in Google cloud pltform
-the supported files are:
+the supporting files are:
 
 a)Dockerfile
 ```python
