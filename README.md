@@ -22,7 +22,7 @@ the Roosevelt National Forest of Northern Colorado with the best accuracy
 3: Comanche Peak<br>
 4: Cache la Poudre<br>
 
-# My approacg
+# My approach
 
 
 ## Rare soil types
@@ -60,7 +60,8 @@ eda_df['soil_type']=eda_df['soil_type'].replace(to_replace=rare_soil_type,value=
 ![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\confussion_matrix.PNG)
 
 - **Classification report**
-![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\classification_report.PNG)
+
+![image](https://github.com/Basavaraj100/forest_cover_type_prediction/blob/main/images/classification_report.PNG)
 
 
 ## Model deployment in GCP
