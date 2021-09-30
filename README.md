@@ -36,28 +36,27 @@ eda_df['soil_type']=eda_df['soil_type'].replace(to_replace=rare_soil_type,value=
 - Rare soil types are
 
 
-
-![image](\images\rare_soil_types.PNG)
+![image](https://github.com/Basavaraj100/forest_cover_type_prediction/blob/main/images/rare_soil_types.PNG)
 
 
 
 ## Ml model building
 - We used Decision tree as base model, becuase it need less feature engineering then we tried with random forest followed by feature selection
 
-![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\model_building_flowchart.png)
+![image](https://github.com/Basavaraj100/forest_cover_type_prediction/blob/main/images/model_building_flowchart.png)
 
 
 ## Feature selection
 - The feature importance technique from random forest is used to select top 16 important features
 - selected features are:
 
-![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\selected_features.PNG)
+![image](https://github.com/Basavaraj100/forest_cover_type_prediction/blob/main/images/selected_features.PNG)
 
 ## Final model performance
 - Finally we select random forest as final model with selected features and hyperparameter tuning
 - **Confusion matrix**
 
-![image](C:\Users\HP\Desktop\Data_science\ML_Projects\P-06(Forest_cover_type_prediction_internship_i_neuron)\forest_cover_type_prediction\images\confussion_matrix.PNG)
+![image](https://github.com/Basavaraj100/forest_cover_type_prediction/blob/main/images/confussion_matrix.PNG)
 
 - **Classification report**
 
